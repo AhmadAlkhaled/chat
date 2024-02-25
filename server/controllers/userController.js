@@ -3,6 +3,10 @@ import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
+export const getRoot = (req, res)=>{
+res.send(' Server runing port:4040  ')
+}
+
 
 export const addNewUser = async (req, res) => {
   const { currentUserId, friedUserId } = req.body;

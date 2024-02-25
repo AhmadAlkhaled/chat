@@ -7,8 +7,10 @@ import {
   deleteUser,
   updateImg,
   updateUserData,
+  getRoot
 } from '../controllers/userController.js';
 
+router.get('/', getRoot);
 router.post('/addNewUser', addNewUser);
 router.post('/getFriends', getFriends);
 router.post('/getChats', getChats);
