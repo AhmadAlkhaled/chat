@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node  index",
-    "build":"",
+    "build":"build",
     "start:dev": "nodemon  index"
   },
   "keywords": [],
