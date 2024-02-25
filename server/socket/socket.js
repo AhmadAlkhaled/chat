@@ -11,7 +11,7 @@ export const socketFunc = (WebServer) => {
   const io = new Server(WebServer, {
     cors: {
       origin: 'https://chat-yber.vercel.app',
-      methods: ['GET', 'POST'],
+      methods: ['*'],
     },
   });
 
