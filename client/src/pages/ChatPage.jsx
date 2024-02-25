@@ -50,7 +50,7 @@ const ChatPage = () => {
 
   useEffect(() => {
     const token = getCookie('token');
-    const socket = io('https://chat-psi-brown.vercel.app/websocket', {
+    const socket = io('https://chat-psi-brown.vercel.app/socket.io', {
       query: {
         token: getCookie('token'),
       },
