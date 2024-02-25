@@ -7,11 +7,13 @@
     {
       "src": "/(.*)",
       "dest": "index.js"
-    },
-    {
-      "src": "/socket.io",
-      "dest": "index.js",
-      "headers": { "Upgrade": "websocket" }
+    }
+    
+  ],
+  "rewrites": [
+    { 
+      "source": "/(.*)", 
+      "destination": "/index.html" 
     }
   ]
 }
