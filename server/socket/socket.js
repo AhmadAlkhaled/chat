@@ -8,12 +8,7 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 export const socketFunc = (WebServer) => {
-  const io = new Server(WebServer, {
-    cors: {
-      origin: '*',
-      methods: ['*'],
-    },
-  });
+  const io = new Server(WebServer);
 
   let onlineUsers = [];
 
