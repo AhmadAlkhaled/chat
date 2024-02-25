@@ -17,6 +17,14 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://chat-yber.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 // Variables
 const PORT = process.env.PORT || 4040;
 const MDB_URL = process.env.MDB_URL;
