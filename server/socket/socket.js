@@ -8,9 +8,7 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 export const socketFunc = (WebServer) => {
-  const io = new Server(WebServer, {
-    path: process.env.CLIENT_URL,
-  });
+  const io = new Server(WebServer);
 
   let onlineUsers = [];
 
