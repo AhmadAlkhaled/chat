@@ -9,10 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 export const socketFunc = (WebServer) => {
   const io = new Server(WebServer, {
-    cors: {
-      origin: process.env.CLIENT_URL,
-      methods: ['GET', 'POST'],
-    },
+    path: process.env.CLIENT_URL,
   });
 
   let onlineUsers = [];
