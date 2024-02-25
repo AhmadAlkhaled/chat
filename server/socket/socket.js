@@ -9,7 +9,6 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 export const socketFunc = (WebServer) => {
   const io = new Server(WebServer, {
-    path:'/socket.io/',
     cors: {
       origin: 'https://chat-yber.vercel.app',
       methods: ['GET', 'POST'],
