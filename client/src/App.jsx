@@ -3,7 +3,7 @@ import axios from 'axios';
 import router from './utils/router.jsx';
 
 function App() {
-  axios.defaults.baseURL = 'http://localhost:4040';
+  axios.defaults.baseURL = 'https://chat-psi-brown.vercel.app/';
   axios.defaults.withCredentials = true;
 
   
