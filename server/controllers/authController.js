@@ -32,6 +32,7 @@ export const login = async (req, res) => {
             if (err) throw err;
             res.cookie('token', token).status(200).json({
               message: 'your logged in',
+              token: token
             });
           }
         );

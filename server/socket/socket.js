@@ -131,8 +131,5 @@ export const socketFunc = (WebServer) => {
       socket.to(id.id).emit('closeVideoCall');
     });
 
-
-
-
   });
 };

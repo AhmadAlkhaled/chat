@@ -26,6 +26,7 @@ const LogIn = () => {
       })
       .then((data) => {
         if (data.data.message === 'your logged in') {
+          document.cookie = data.data.token
           setLoading(false);
           navigate('/chat-page');
         } else if (
