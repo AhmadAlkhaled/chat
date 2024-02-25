@@ -43,5 +43,6 @@
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
     "vite": "^5.0.0"
-  }
+  },
+  "proxy": "https://chat-psi-brown.vercel.app/"
 }
