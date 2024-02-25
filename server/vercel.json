@@ -9,7 +9,7 @@
       "dest": "index.js"
     },
     {
-      "src": "/socket.io/(.*)",
+      "src": "/websocket",
       "dest": "index.js",
       "headers": { "Upgrade": "websocket" }
     }
