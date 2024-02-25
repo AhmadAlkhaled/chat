@@ -50,7 +50,7 @@ const ChatPage = () => {
 
   useEffect(() => {
     const token = getCookie('token');
-    const socket = io('http://localhost:4040', {
+    const socket = io('https://chat-psi-brown.vercel.app/', {
       query: {
         token: getCookie('token'),
       },
@@ -104,7 +104,7 @@ const ChatPage = () => {
       const decodedToken = jwtDecode(token);
 
       axios
-        .post('http://localhost:4040/getFriends', { id: decodedToken.userId })
+        .post('/getFriends', { id: decodedToken.userId })
         .then((data) => {
           setFriends(data.data.findUsers);
         });
