@@ -44,5 +44,5 @@
     "tailwindcss": "^3.3.5",
     "vite": "^5.0.0"
   },
-  "proxy": "https://chat-psi-brown.vercel.app/"
+  "proxy": "https://chat-xcrm.onrender.com/"
 }

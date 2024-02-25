@@ -3,7 +3,7 @@ import axios from 'axios';
 import router from './utils/router.jsx';
 
 function App() {
-  axios.defaults.baseURL = 'https://chat-psi-brown.vercel.app/';
+  axios.defaults.baseURL = 'https://chat-xcrm.onrender.com/';
   axios.defaults.withCredentials = true;
 
   
