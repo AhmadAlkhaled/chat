@@ -1,7 +1,6 @@
 import avatar from '../assets/images/img_avatar.png';
 import callLoader from '../assets/images/callLoder.svg';
-
-import { useEffect, useState , useContext, createElement , useRef } from 'react';
+import { useEffect, useState, useContext, useRef } from 'react';
 import { UserContext } from '../components/UserContextProvider';
 import  Peer  from "peerjs";
 
@@ -11,7 +10,7 @@ const VideoCall = (props)=>{
     const [ callingState , setCallingState ] = useState('Calling..');
     const [friendPeerId, setFriendPeerId] = useState(null);
     const [startVideoCall, setStartVideoCall] = useState(false);
-
+    const [CallStart, setCallStart] = useState(false);
 
     const peer = new Peer();
     const myCamraStream = useRef();
@@ -23,14 +22,13 @@ const VideoCall = (props)=>{
             const call =  peer.call(friendPeerId, myCamraStream.current.srcObject );
             call.on("stream", (remoteStream) => {
                 setStartVideoCall(true);
+                setCallStart(true);
                 setTimeout(() => {
                     friendCamraStream.current.srcObject = remoteStream;
                 }, 10); 
             });      
         };
     };
-
-
 
     useEffect(()=>{
         peer.on('open', function(){
@@ -44,7 +42,6 @@ const VideoCall = (props)=>{
         });
     },[])
 
-
     useEffect(()=>{
         if(props.ICall){
             socket.emit('videoCall' , { from :currentUser , to : props.currentChatUser })
@@ -52,7 +49,6 @@ const VideoCall = (props)=>{
         navigator.mediaDevices.getUserMedia({  video: true , audio:true })
         .then(function (stream) {
             myCamraStream.current.srcObject = stream;
-            myCamraStream.current.muted = true ;
         })
         .catch(function (error) {
             console.log('Error accessing webcam:', error);
@@ -78,6 +74,7 @@ const VideoCall = (props)=>{
                 }, 10); 
             })
         });
+
     },[]);
 
     useEffect(()=>{
@@ -124,6 +121,7 @@ const VideoCall = (props)=>{
             });
         }
     }
+
     const videoBoxMoving = (e) => {
         
         const element = e.target.parentElement;
@@ -165,10 +163,10 @@ const VideoCall = (props)=>{
         <div className={` ${ mobileVision ? 'overflow-hidden' : '' }  absolute top-0 left-0 w-full h-[100vh] items-center justify-center gap-[5px] bg-secondary z-40 flex flex-wrap  `}>
             <div  className={` VideoBox1 h-[49%]  bg-hoverLight  `}
                 onMouseDown={videoBoxMoving}
-             >
+            >
 
-                <video ref={myCamraStream} className='w-[100%] h-[100%] object-cover' autoPlay >
-                </video>
+            <video ref={myCamraStream} className='w-[100%] h-[100%] object-cover' autoPlay muted >
+            </video>
                 
                   
             </div>
@@ -178,7 +176,7 @@ const VideoCall = (props)=>{
 
                 {
                     startVideoCall ? 
-                    <video ref={friendCamraStream} className='w-[100%] h-[100%] object-cover' autoPlay muted >
+                    <video ref={friendCamraStream} className='w-[100%] h-[100%] object-cover' autoPlay  >
                     </video>
                     :
                     <div className=' w-full h-full bg-[#27272A] overflow-hidden flex flex-col justify-center items-center ' >
@@ -194,8 +192,6 @@ const VideoCall = (props)=>{
                         </div>
 
                         <span className={`text-[30px] text-textWhite mt-[20px] text-center` } >   {callingState}    </span>
-
-             
                     </div  >
                 }
                
@@ -204,7 +200,7 @@ const VideoCall = (props)=>{
             <div className=' w-[100%] absolute bottom-4 flex justify-center gap-[20px]  ' >
 
                 {
-                    props.ICall ? 
+                    props.ICall || CallStart ? 
                     <i className="fa-solid fa-video w-[55px] h-[55px] flex justify-center items-center    text-textWhite text-[20px] cursor-pointer bg-textGray  rounded-[50%]"     
                     ></i>
                     :null
@@ -216,14 +212,14 @@ const VideoCall = (props)=>{
                 ></i>
 
                 {
-                    props.ICall ?
-                    null:<i className="fa-solid fa-check   w-[55px] h-[55px] flex justify-center items-center text-textWhite text-[35px] cursor-pointer bg-textGreen  rounded-[50%]"
+                    !props.ICall &&  !CallStart ?
+                    <i className="fa-solid fa-check   w-[55px] h-[55px] flex justify-center items-center text-textWhite text-[35px] cursor-pointer bg-textGreen  rounded-[50%]"
                         onClick={startCall}
-                    ></i>
+                    ></i>:null
                 }
 
                 {
-                    props.ICall ?
+                    props.ICall || CallStart ?
                     <i className="fa-solid fa-microphone   w-[55px] h-[55px] flex justify-center items-center text-textWhite text-[20px] cursor-pointer bg-textGray  rounded-[50%]"
                     ></i>
                     :null
