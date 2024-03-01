@@ -161,22 +161,22 @@ const VideoCall = (props)=>{
 
     return(
         <div className={` ${ mobileVision ? 'overflow-hidden' : '' }  absolute top-0 left-0 w-full h-[100vh] items-center justify-center gap-[5px] bg-secondary z-40 flex flex-wrap  `}>
-            <div  className={` VideoBox1 h-[49%]  bg-hoverLight  `}
+            <div  className={` VideoBox1 h-[49%]  bg-[#27272A]  `}
                 onMouseDown={videoBoxMoving}
             >
 
-            <video ref={myCamraStream} className='w-[100%] h-[100%] object-cover z-0' autoPlay muted >
+            <video ref={myCamraStream} className='w-[100%] h-[100%] object-cover z-10' autoPlay muted >
             </video>
                 
                   
             </div>
-            <div  className={` VideoBox  h-[49%]  bg-hoverLight flex justify-center items-center `} 
+            <div  className={` VideoBox  h-[49%] bg-[#27272A] flex justify-center items-center `} 
                 onMouseDown={videoBoxMoving}
              >
 
                 {
                     startVideoCall ? 
-                    <video ref={friendCamraStream} className='w-[95%] h-[80%]  object-cover z-10 ' autoPlay  >
+                    <video ref={friendCamraStream} className='w-[95%] h-[80%]  object-cover z-0 ' autoPlay  >
                     </video>
                     :
                     <div className=' w-full h-full bg-[#27272A] overflow-hidden flex flex-col justify-center items-center ' >
