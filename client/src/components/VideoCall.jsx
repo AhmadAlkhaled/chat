@@ -176,7 +176,7 @@ const VideoCall = (props)=>{
 
                 {
                     startVideoCall ? 
-                    <video ref={friendCamraStream} className='w-[95%] h-[80%]  object-cover ' autoPlay  >
+                    <video ref={friendCamraStream} className='w-[95%] h-[95%]  object-cover ' autoPlay  >
                     </video>
                     :
                     <div className=' w-full h-full bg-[#27272A] overflow-hidden flex flex-col justify-center items-center ' >
