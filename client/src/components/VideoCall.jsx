@@ -165,7 +165,7 @@ const VideoCall = (props)=>{
                 onMouseDown={videoBoxMoving}
             >
 
-            <video ref={myCamraStream} className='w-[100%] h-[100%] object-cover z-10' autoPlay muted >
+            <video ref={myCamraStream} className='w-[100%] h-[100%] object-cover ' autoPlay muted >
             </video>
                 
                   
@@ -176,7 +176,7 @@ const VideoCall = (props)=>{
 
                 {
                     startVideoCall ? 
-                    <video ref={friendCamraStream} className='w-[95%] h-[80%]  object-cover z-0 ' autoPlay  >
+                    <video ref={friendCamraStream} className='w-[95%] h-[80%]  object-cover ' autoPlay  >
                     </video>
                     :
                     <div className=' w-full h-full bg-[#27272A] overflow-hidden flex flex-col justify-center items-center ' >
