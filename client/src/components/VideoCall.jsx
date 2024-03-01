@@ -170,13 +170,13 @@ const VideoCall = (props)=>{
                 
                   
             </div>
-            <div  className={` VideoBox  h-[49%]  bg-hoverLight `} 
+            <div  className={` VideoBox  h-[49%]  bg-hoverLight flex justify-center items-center `} 
                 onMouseDown={videoBoxMoving}
              >
 
                 {
                     startVideoCall ? 
-                    <video ref={friendCamraStream} className='w-[100%] h-[100%] object-cover' autoPlay  >
+                    <video ref={friendCamraStream} className='lg-w-[90%] lg-h-[80%]  object-cover z-0' autoPlay  >
                     </video>
                     :
                     <div className=' w-full h-full bg-[#27272A] overflow-hidden flex flex-col justify-center items-center ' >
