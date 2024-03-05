@@ -2,10 +2,12 @@ import jwt from 'jsonwebtoken';
 import { UserModel, ChatModel } from '../models/User.js';
 import dotenv from 'dotenv';
 import { Server } from 'socket.io';
-
+import {config} from '../config.js'
 dotenv.config();
+const env = process.env.NODE_ENV ;
+const configOptions = config[env];
 
-const JWT_SECRET = process.env.JWT_SECRET;
+ const JWT_SECRET = configOptions && configOptions.JWT_SECRET;
 
 export const socketFunc = (WebServer) => {
   const io = new Server(WebServer, {

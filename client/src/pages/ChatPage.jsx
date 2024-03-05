@@ -12,6 +12,11 @@ import { motion } from 'framer-motion';
 import AudioCall from '../components/AudioCall'
 import VideoCall from '../components/VideoCall'
 
+import {config} from '../../config.js';
+
+const env = process.env.NODE_ENV ;
+const configOptions = config[env];
+
 
 const ChatPage = () => {
   const {
@@ -50,7 +55,7 @@ const ChatPage = () => {
 
   useEffect(() => {
     const token = getCookie('token');
-    const socket = io('https://chat-xcrm.onrender.com/', {
+    const socket = io(configOptions.SERVER_URL, {
       query: {
         token: getCookie('token'),
       },
@@ -282,11 +287,11 @@ const ChatPage = () => {
           </div>
 
           <motion.div
-            className={`absolute w-[200px] top-[64px] right-3 z-10 bg-[#0000005e]  text-textWhite 
+            className={`absolute w-[200px] top-[64px] right-3   bg-[#020202]  text-textWhite 
             backdrop-blur-sm rounded-b-lg overflow-hidden
             }`}
             initial={{ height: 0 }}
-            animate={{ height: menu ? 'auto' : 0   }}
+            animate={{ height: menu ? 'auto' : 0  , border :  menu ? ' 1px solid  #066D4F' : 'none' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             <p

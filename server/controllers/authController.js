@@ -2,11 +2,17 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/User.js';
 import dotenv from 'dotenv';
+import {config} from '../config.js'
 
 dotenv.config();
+const env = process.env.NODE_ENV ;
+const configOptions = config[env];
+
+
 
 // JST SECRET KEY
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = configOptions && configOptions.JWT_SECRET;
+
 
 // LOGIN
 export const login = async (req, res) => {

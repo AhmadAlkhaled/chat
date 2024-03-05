@@ -6,6 +6,11 @@ import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../components';
 import logo from '../../assets/images/logo1.svg';
 
+import {config} from '../../../config.js';
+
+const env = process.env.NODE_ENV ;
+const configOptions = config[env];
+
 const LogIn = () => {
   const { email, setEmail, password, setPassword, setCurrentUser } =
     useContext(UserContext);
@@ -153,7 +158,7 @@ const LogIn = () => {
         )}
 
         <div className='flex w-full justify-center'>
-          <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID}>
+          <GoogleOAuthProvider clientId={configOptions.VITE_CLIENT_ID}>
             <GoogleLogin
               onSuccess={(credentialResponse) => {
                 handleCallbackResponse(credentialResponse);

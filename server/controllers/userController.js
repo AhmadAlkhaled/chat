@@ -1,7 +1,11 @@
 import { UserModel, ChatModel } from '../models/User.js';
 import jwt from 'jsonwebtoken';
+import {config} from '../config.js'
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const env = process.env.NODE_ENV ;
+const configOptions = config[env];
+
+const JWT_SECRET = configOptions && configOptions.JWT_SECRET;
 
 export const getRoot = (req, res)=>{
 res.send(' Server runing port:4040  ')

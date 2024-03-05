@@ -34,6 +34,7 @@ const AudioCall = (props)=>{
               const call =  peer.call(friendPeerId, audioStream );
                 call.on('stream', function(remoteStream) {
                     audioRef.current.srcObject = remoteStream ;
+                    console.log('stream');
                 })
             });
         };
